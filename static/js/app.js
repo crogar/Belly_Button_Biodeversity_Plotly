@@ -3,6 +3,7 @@ d3.json("./data/samples.json").then((data) => {
     populate_dropdown(data.names);
     top_ten_otus = data.samples[0];
     plot_bar(top_ten_otus)
+    plot_buble(data.samples[0])
     // console.log(data)
 });
 
@@ -37,6 +38,22 @@ function plot_bar(subject){
     Plotly.newPlot("bar", data, layout);
 }
 
-function plot_buble(){
+function plot_buble(subject){
 
+  var data = [
+    trace1 = {
+      x: subject.otu_ids,
+      y: subject.sample_values,
+      text: subject.otu_labels,
+      mode: 'markers',
+      marker: {
+        color: subject.otu_ids,
+        size: subject.sample_values
+      }
+    }];
+  var layout = {
+    title: 'Bacterias Cultures Per sample',
+  };
+  
+  Plotly.newPlot('bubble', data, layout);
 }
