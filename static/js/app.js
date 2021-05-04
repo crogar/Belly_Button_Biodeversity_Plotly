@@ -3,7 +3,7 @@ d3.json("./data/samples.json").then((data) => {
     populate_dropdown(data.names);
     plot_bar(data.samples[0])   // Where data.samples[0] represents the first subject in our dataset
     plot_buble(data.samples[0])
-    display_sample_metada(data.samples[0])
+    display_sample_metada(data.metadata[0])   // Where data.metada[0] represents the first subject's metadata in our dataset
 });
 
 function populate_dropdown(names){   // This functions populates the dropdown menu
@@ -15,11 +15,9 @@ function populate_dropdown(names){   // This functions populates the dropdown me
 }
 
 function plot_bar(subject){
-    console.log(subject);
     var y_labels = subject.otu_ids.slice(0,10).map(otu_id=>`OTU ${otu_id}`);
     var x_vals = subject.sample_values.slice(0,10);
     var hover_vals = subject.otu_labels.slice(0,10);
-    console.log(hover_vals)
     // // Create the data array for our plot
     var data = [
        trace = {     // Create your trace.
@@ -60,5 +58,9 @@ function plot_buble(subject){
 
 // Display the sample Metadata 
 function display_sample_metada(sample){
-  console.log(sample)
+  var subject_info = d3.select("#sample-metadata")
+  Object.entries(sample).forEach(([key, value]) => {
+    console.log(key,value)
+    var pgh = subject_info.append("p").text(`${key}:${value}`).style("font-weight", 600);
+  });
 }
