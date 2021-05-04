@@ -1,9 +1,9 @@
 // Use D3 fetch to read the JSON file
 d3.json("./data/samples.json").then((data) => {
     populate_dropdown(data.names);
-    plot_bar(data.samples[0])
+    plot_bar(data.samples[0])   // Where data.samples[0] represents the first subject in our dataset
     plot_buble(data.samples[0])
-    // console.log(data)
+    display_sample_metada(data.samples[0])
 });
 
 function populate_dropdown(names){   // This functions populates the dropdown menu
@@ -56,4 +56,9 @@ function plot_buble(subject){
   };
   
   Plotly.newPlot('bubble', data, layout);
+}
+
+// Display the sample Metadata 
+function display_sample_metada(sample){
+  console.log(sample)
 }
