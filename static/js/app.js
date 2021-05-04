@@ -60,7 +60,7 @@ function plot_buble(subject){
 function display_sample_metada(sample){
   var subject_info = d3.select("#sample-metadata").html("")
   Object.entries(sample).forEach(([key, value]) => {
-    var pgh = subject_info.append("p").text(`${key}:${value}`).style("font-weight", 600);
+    var pgh = subject_info.append("p").text(`${key}:${value}`);
   });
 }
 
