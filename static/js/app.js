@@ -9,8 +9,8 @@ d3.json("./data/samples.json").then((data) => {
 function populate_dropdown(names){   // This functions populates the dropdown menu
   var options = d3.select("#selDataset");
     names.forEach((name)=>{  
-      var option = options.append("option")
-      option.text(name).property("value",name)
+      var option = options.append("option");
+      option.text(name).property("value",name);
   });
 }
 
@@ -66,10 +66,10 @@ function display_sample_metada(sample){
 
 function optionChanged(subject_id){
   d3.json("./data/samples.json").then((data) => {
-    var filtered_metadata = data.metadata.filter((subject)=> subject.id == subject_id)
-    var filtered_sample = data.samples.filter((subject)=> subject.id == subject_id)
-    // plot_bar(filtered_sample)   // Where data.samples[0] represents the first subject in our dataset
-    // plot_buble(filtered_sample)
-    display_sample_metada(filtered_metadata[0])   // Where data.metada[0] represents the first subject's metadata in our dataset
+    var filtered_metadata = data.metadata.filter((subject)=> subject.id == subject_id)[0]
+    var filtered_sample = data.samples.filter((subject)=> subject.id == subject_id)[0]
+    plot_bar(filtered_sample)   // Where data.samples[0] represents the first subject in our dataset
+    plot_buble(filtered_sample)
+    display_sample_metada(filtered_metadata)   // Where data.metada[0] represents the first subject's metadata in our dataset
 });
 }
