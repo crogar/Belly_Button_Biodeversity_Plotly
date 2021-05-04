@@ -58,9 +58,18 @@ function plot_buble(subject){
 
 // Display the sample Metadata 
 function display_sample_metada(sample){
-  var subject_info = d3.select("#sample-metadata")
+  var subject_info = d3.select("#sample-metadata").html("")
   Object.entries(sample).forEach(([key, value]) => {
-    console.log(key,value)
     var pgh = subject_info.append("p").text(`${key}:${value}`).style("font-weight", 600);
   });
+}
+
+function optionChanged(subject_id){
+  d3.json("./data/samples.json").then((data) => {
+    var filtered_metadata = data.metadata.filter((subject)=> subject.id == subject_id)
+    var filtered_sample = data.samples.filter((subject)=> subject.id == subject_id)
+    // plot_bar(filtered_sample)   // Where data.samples[0] represents the first subject in our dataset
+    // plot_buble(filtered_sample)
+    display_sample_metada(filtered_metadata[0])   // Where data.metada[0] represents the first subject's metadata in our dataset
+});
 }
