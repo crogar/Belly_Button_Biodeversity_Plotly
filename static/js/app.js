@@ -1,8 +1,7 @@
 // Use D3 fetch to read the JSON file
 d3.json("./data/samples.json").then((data) => {
     populate_dropdown(data.names);
-    top_ten_otus = data.samples[0];
-    plot_bar(top_ten_otus)
+    plot_bar(data.samples[0])
     plot_buble(data.samples[0])
     // console.log(data)
 });
@@ -39,7 +38,6 @@ function plot_bar(subject){
 }
 
 function plot_buble(subject){
-
   var data = [
     trace1 = {
       x: subject.otu_ids,
@@ -48,11 +46,13 @@ function plot_buble(subject){
       mode: 'markers',
       marker: {
         color: subject.otu_ids,
-        size: subject.sample_values
+        size: subject.sample_values,
+        colorscale: "Earth"
       }
     }];
   var layout = {
     title: 'Bacterias Cultures Per sample',
+    xaxis: {title:"OTU ID"}
   };
   
   Plotly.newPlot('bubble', data, layout);
