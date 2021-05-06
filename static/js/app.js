@@ -64,6 +64,11 @@ function display_sample_metada(sample){
   });
 }
 
+// Bonus part, Gauge Chart
+function plot_gauge(){
+  
+}
+
 function optionChanged(subject_id){
   d3.json("./data/samples.json").then((data) => {
     var filtered_metadata = data.metadata.filter((subject)=> subject.id == subject_id)[0]
