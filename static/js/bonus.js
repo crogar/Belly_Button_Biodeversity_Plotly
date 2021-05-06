@@ -5,13 +5,13 @@ function gauge_plot(subjec_sample){
     {
       domain: { x: [0, 2], y: [0, 2] },
       value: value,
-      title: { text: "Belly Button Washing Frequency" },
+      title: { text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week" },
       type: "indicator",
       mode: "gauge+number",
       gauge: {
         axis: { range: [0, 9] },
         steps: [
-          { range: [0, 1], color: "lightgray" },
+          { range: [0, 1], color: "gray" },
           { range: [1, 2], color: "gray" },
           { range: [2, 3], color: "gray" },
           { range: [3, 4], color: "gray" },
