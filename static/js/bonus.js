@@ -21,7 +21,7 @@ function gauge_plot(subjec_sample){
           { range: [8, 9], color: "rgba(64, 119, 119,1)" },
         ],
         threshold: {
-          line: { color: "red", width: 4 },
+          line: { color: "purple", width: 7 },
           thickness: 0.75,
           value: value
         }
