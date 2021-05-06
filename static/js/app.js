@@ -71,5 +71,6 @@ function optionChanged(subject_id){
     plot_bar(filtered_sample)   // Where data.samples[0] represents the first subject in our dataset
     plot_buble(filtered_sample)
     display_sample_metada(filtered_metadata)   // Where data.metada[0] represents the first subject's metadata in our dataset
+    gauge_plot(filtered_metadata);
 });
 }
