@@ -2,8 +2,9 @@
 d3.json("./data/samples.json").then((data) => {
     populate_dropdown(data.names);
     plot_bar(data.samples[0])   // Where data.samples[0] represents the first subject in our dataset
-    plot_buble(data.samples[0])
-    display_sample_metada(data.metadata[0])   // Where data.metada[0] represents the first subject's metadata in our dataset
+    plot_buble(data.samples[0]);
+    display_sample_metada(data.metadata[0]);   // Where data.metada[0] represents the first subject's metadata in our dataset
+    gauge_plot(data.metadata[0]);
 });
 
 function populate_dropdown(names){   // This functions populates the dropdown menu
@@ -68,9 +69,9 @@ function optionChanged(subject_id){
   d3.json("./data/samples.json").then((data) => {
     var filtered_metadata = data.metadata.filter((subject)=> subject.id == subject_id)[0]
     var filtered_sample = data.samples.filter((subject)=> subject.id == subject_id)[0]
-    plot_bar(filtered_sample)   // Where data.samples[0] represents the first subject in our dataset
-    plot_buble(filtered_sample)
-    display_sample_metada(filtered_metadata)   // Where data.metada[0] represents the first subject's metadata in our dataset
+    plot_bar(filtered_sample); 
+    plot_buble(filtered_sample);
+    display_sample_metada(filtered_metadata);
     gauge_plot(filtered_metadata);
 });
 }

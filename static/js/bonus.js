@@ -1,6 +1,5 @@
 function gauge_plot(subjec_sample){
     var value = subjec_sample.wfreq;
-    console.log(value)
     var data = [
     {
       domain: { x: [0, 2], y: [0, 2] },
